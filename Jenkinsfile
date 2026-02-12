@@ -14,7 +14,7 @@ pipeline {
         
         stage('Git Checkout ') {
             steps {
-               git branch: 'main', url: 'https://github.com/bhaskar2024958/BoardgameListingWebApp'
+               git branch: 'main', url: 'https://github.com/Bhagavan1506/BoardgameListingWebApp.git'
             }
         }
         
@@ -63,15 +63,15 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                script{
-                   withDockerRegistry(credentialsId: 'docker-cred',toolName: 'docker') {
-                    sh "docker build -t javaexpress/boardgame:latest ."
+                   withDockerRegistry(credentialsId: 'docker-creds',toolName: 'docker') {
+                    sh "docker build -t bhagavanbongi/boardgame:latest ."
                  }
                }
             }
         }
         stage('Docker Image Scan') {
             steps {
-                sh 'trivy image --format table -o trivy-fs-report1.html javaexpress/boardgame:latest'
+                sh 'trivy image --format table -o trivy-fs-report1.html bhagavanbongi/boardgame:latest'
             }
         }
         
@@ -79,7 +79,7 @@ pipeline {
             steps {
                script{
                    withDockerRegistry(credentialsId: 'docker-cred',toolName: 'docker') {
-                    sh "docker push javaexpress/boardgame:latest"
+                    sh "docker push bhagavanbongi/boardgame:latest"
                  }
                }
             }
