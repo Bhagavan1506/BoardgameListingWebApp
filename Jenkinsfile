@@ -38,7 +38,7 @@ pipeline {
         
         stage('Sonar Analysis') {
             steps {
-               withSonarQubeEnv('sonar'){
+               withSonarQubeEnv('sonarQube'){
                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=OnlineGame \
                    -Dsonar.java.binaries=. \
                    -Dsonar.projectKey=OnlineGame '''
