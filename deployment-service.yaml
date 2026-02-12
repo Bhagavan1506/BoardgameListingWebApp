@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: boardgame
-          image: javaexpress/boardgame:latest
+          image: bhagavanbongi/boardgame:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
