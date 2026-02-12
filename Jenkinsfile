@@ -78,7 +78,7 @@ pipeline {
         stage('Docker Push') {
             steps {
                script{
-                   withDockerRegistry(credentialsId: 'docker-cred',toolName: 'docker') {
+                   withDockerRegistry(credentialsId: 'docker-creds',toolName: 'docker') {
                     sh "docker push bhagavanbongi/boardgame:latest"
                  }
                }
